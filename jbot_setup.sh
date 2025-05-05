@@ -2,9 +2,11 @@
 pkg update && pkg upgrade -y
 pkg install -y git curl
 
-GH_USER="Begsth"
-GH_TOKEN="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"
+# Clone using SSH (requires SSH key to be added to GitHub)
+git clone git@github.com:jbotdev/jbot.git || {
+  echo "Cloning failed. Check SSH key setup and repository access."
+  exit 1
+}
 
-git clone https://${GH_USER}:${GH_TOKEN}@github.com/jbotdev/jbot.git
 cd jbot || exit 1
 bash setup.sh
